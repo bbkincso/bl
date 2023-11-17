@@ -24,6 +24,12 @@ h1 {
     background-color: #f0e6f5;
     padding: 0.5em;
     margin-bottom: 0;
+    transition: background-color 0.8s ease-out, color 0.8s ease-out;
+}
+
+h1:hover {
+    background-color: #D65600;
+    color: #fff;
 }
 
 h2, h3, h4{
