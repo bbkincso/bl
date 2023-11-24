@@ -7,7 +7,38 @@
     </head>
     <body>
         <header>
-            <h1>Balloons Ltd.</h1>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+            </style>
+            <h1><canvas id="canvas" width="600" height="200"></canvas></h1>
+            
+            <script type="application/javascript">
+                var ctx = document.querySelector("canvas").getContext("2d"),
+                dashLen = 220, dashOffset = dashLen, speed = 10,
+                txt = "Balloons Ltd.", x = 30, i = 0;
+    
+                ctx.font = "2em Courgette, cursive"; 
+                ctx.lineWidth = 5; ctx.lineJoin = "round"; ctx.globalAlpha = 3/3;
+                ctx.strokeStyle = ctx.fillStyle = "#cc3399";
+    
+                (function loop() {
+                ctx.clearRect(x, 0, 60, 150);
+                ctx.setLineDash([dashLen - dashOffset, dashOffset - speed]); 
+                dashOffset -= speed;                                         
+                ctx.strokeText(txt[i], x, 90);                               
+    
+                if (dashOffset > 0) requestAnimationFrame(loop);             
+                else {
+                    ctx.fillText(txt[i], x, 90);                               
+                    dashOffset = dashLen;                                      
+                    x += ctx.measureText(txt[i++]).width + ctx.lineWidth * Math.random();
+                    ctx.setTransform(1, 0, 0, 1, 0, 3 * Math.random());        
+                    ctx.rotate(Math.random() * 0.005);                 
+                    if (i < txt.length) requestAnimationFrame(loop);
+                }
+                })();
+            </script>
+
             <ul class="navigation">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>

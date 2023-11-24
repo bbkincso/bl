@@ -17,7 +17,6 @@ body{
 
 h1 {
     font-size: 3em;
-    color:#609;
     font-weight: 400;
     font-family: "Courier New", Courier, monospace;
     border: 1px solid #4c0072;
@@ -31,8 +30,7 @@ h1 {
 }
 
 h1:hover {
-    background-color: #D65600;
-    color: #fff;
+    background-color: #95f1e5;
 }
 
 h2, h3, h4{
